@@ -1,0 +1,26 @@
+<div class="d-flex flex-column  col-md-12 align-items-center" *ngIf="optimalStrategies.length > 0">
+  <h3>Estrategias sugeridas</h3>
+  <div class="d-flex flex-row flex-wrap col-md-12">
+    <div *ngFor="let strategy of optimalStrategies; let i = index;" [ngClass]="{'border border-success border-3': (i==0)}" class="card d-flex flex-column col-md-2 p-2 m-2">
+      <div>
+        <label>Stints:</label>{{ strategy.stintCollection.length }}
+      </div>
+      <div>
+        <label>Paradas: </label> {{ strategy.stintCollection.length - 1 }}
+      </div>
+      <div>
+        <label>Rendimiento: </label> {{ strategy.averagePerformance }}
+      </div>
+      <div>
+        <label>Consumo: </label> {{ strategy.totalConsumed }}
+      </div>
+      <h6>Neumaticos:</h6>
+      <ul>
+        <i *ngFor="let tire of strategy.stintCollection">
+          <h6>{{tire.tireType}}</h6>
+          <label>Vueltas: </label>{{ tire.laps }}
+        </i>
+      </ul>
+    </div>
+  </div>
+</div>

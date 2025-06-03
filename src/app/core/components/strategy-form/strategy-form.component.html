@@ -1,0 +1,22 @@
+<div class="col-md-12 d-flex d-row justify-content-center">
+  <form [formGroup]="form" (ngSubmit)="onSubmit()" class="col-md-6">
+    <div class="form-group">
+      <label for="createdBy">Nombre</label>
+      <input id="createdBy" formControlName="createdBy" maxlength="100" type="text" class="form-control" placeholder="Adrian Newey" />
+    </div>
+    <div class="form-group">
+      <label for="driverId">Pilotos</label>
+      <select name="driver" id="driverId" formControlName="driverId" class="form-control">
+        <option *ngFor="let driver of drivers" [value]="driver.id">
+          {{ driver.name }}
+        </option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="laps">Vueltas</label>
+      <input id="laps" formControlName="laps" type="number" class="form-control" min="1" placeholder="10" />
+    </div>
+    <button type="submit" class="btn btn-primary col-md-12 mt-2 mb-2">Generar</button>
+    <label class="text-danger" *ngIf="errorMessage.length > 0">{{errorMessage}}</label>
+  </form>
+</div>
